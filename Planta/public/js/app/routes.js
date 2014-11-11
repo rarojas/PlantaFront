@@ -1,5 +1,45 @@
-var Routes = ['$routeProvider',
-    function ($routeProvider) {
+var Routes = ['$routeProvider', '$httpProvider',
+    function ($routeProvider, $httpProvider) {
+
+//        $httpProvider.defaults.useXDomain = true;      
+  //      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+        $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
+            return {
+                'responseError': function (rejection) {
+                    var status = rejection.status;
+                    var config = rejection.config;
+                    var method = config.method;
+                    var url = config.url;
+                    if (status === 401) {
+                        $location.path("/login");
+                    } else {
+                        $rootScope.error = method + " on " + url + " failed with status " + status;
+                    }
+
+                    return $q.reject(rejection);
+                }
+            };
+        });
+
+        $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
+            return {
+                'request': function (config) {
+                    var isRestCall = config.url.indexOf('api') !== 0;                                         
+                    if (isRestCall && angular.isDefined($rootScope.authToken)) {
+                        var authToken = $rootScope.authToken;
+                       // if ( true) {
+                       //        console.log($rootScope.authToken);
+                       //     config.headers['Authentication'] = authToken;
+                        //} else {
+                            config.url = config.url + "?token=" + authToken;
+                        //}
+                    }
+                    return config || $q.when(config);
+                }
+            };
+        });
+
         $routeProvider.
                 when('/NuevaPrueba', {
                     templateUrl: '/templates/Ensamble/Nueva.html',
@@ -121,6 +161,10 @@ var Routes = ['$routeProvider',
                     templateUrl: '/templates/Pruebas/Arranque.html',
                     controller: 'PruebaArranqueCtrl'
                 }).
+                when('/PruebaArranqueView/:EnsambleID/:PruebaID', {
+                    templateUrl: '/templates/Pruebas/ArranqueView.html',
+                    controller: 'PruebaArranqueViewCtrl'
+                }).
                 when('/PruebaInstalacion/:EnsambleID', {
                     templateUrl: '/templates/Pruebas/Instalacion.html',
                     controller: 'PruebaInstalacionCtrl'
@@ -133,6 +177,10 @@ var Routes = ['$routeProvider',
                     templateUrl: '/templates/Pruebas/Vacio.html',
                     controller: 'PruebaVacioCtrl'
                 }).
+                when('/PruebaVacioView/:EnsambleID/:PruebaID', {
+                    templateUrl: '/templates/Pruebas/VacioView.html',
+                    controller: 'PruebaVacioViewCtrl'
+                }).
                 when('/ProgramacionPruebasEnsamble', {
                     templateUrl: '/templates/Ensamble/Programacion.html',
                     controller: 'MainCtrl'
@@ -142,8 +190,12 @@ var Routes = ['$routeProvider',
                     templateUrl: '/templates/EnsambleArranque/Programacion.html',
                     controller: 'ProgramacionPruebasArranqueCtrl'
                 })
+                .when('/login', {
+                    templateUrl: '/templates/login/login.html',
+                    controller: LoginController
+                })
                 .otherwise({
-                    redirectTo: '/'
+                    redirectTo: '/Pruebas'
                 });
     }];
 app.config(Routes);

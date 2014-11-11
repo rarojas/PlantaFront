@@ -1,7 +1,9 @@
 var app = angular.module("PlantaAPP", ['nvd3ChartDirectives', 'n3-line-chart', "ngResource", "ngRoute",
-    'angular-loading-bar' //'vr.directives.slider'
+    'angular-loading-bar',
             , 'gantt', // angular-gantt.
+    
     'mgcrea.ngStrap', "angularMoment"
+            , "ngCookies"
 ]);
 var BaseTableController = function ($scope, $filter) {
     $scope.current = 0;
@@ -270,7 +272,6 @@ var BaseController = function ($scope, $http, $interval, $routeParams, PlantaSer
                 }
             ]
         });
-
     };
     $scope.Autoriza = function () {
         PlantaServices.Pruebas.AutorizaE({id: $scope.prueba.id}, {},
@@ -902,7 +903,21 @@ app.controller("EnsambleArranqueCtrl", ["$scope", "PlantaServices", "$routeParam
     }]);
 app.controller("PruebaArranqueCtrl", ["$routeParams", "$scope", "PlantaServices", "$timeout",
     function ($routeParams, $scope, PlantaServices, $timeout) {
-
+        $scope.ensamble = PlantaServices.EnsambleArranque.get({id: $routeParams.EnsambleID}, function () {
+            $scope.prueba = new PlantaServices.Arranques({
+                dtInicio: new Date(),
+                dtFin: new Date(),
+                tipo: 1,
+                estatus: "Creada",
+                ensamblearranque: {id: $scope.ensamble.id}
+            });
+        });
+        $scope.GuardarPrueba = function () {
+            $scope.prueba.estatus = "Finalizada";
+            $scope.prueba.$save(function () {
+            }, function () {
+            });
+        };
     }]);
 app.controller("PruebaInstalacionCtrl", ["$routeParams", "$scope", "PlantaServices", "$timeout",
     function ($routeParams, $scope, PlantaServices, $timeout) {
@@ -916,6 +931,7 @@ app.controller("PruebaInstalacionCtrl", ["$routeParams", "$scope", "PlantaServic
             });
         });
         $scope.GuardarPrueba = function () {
+            $scope.prueba.estatus = 2;
             $scope.prueba.$save(function () {
                 $scope.prueba.estatus = 2;
             }, function () {
@@ -924,7 +940,45 @@ app.controller("PruebaInstalacionCtrl", ["$routeParams", "$scope", "PlantaServic
     }]);
 app.controller("PruebaVacioCtrl", ["$routeParams", "$scope", "PlantaServices", "$timeout",
     function ($routeParams, $scope, PlantaServices, $timeout) {
+        $scope.ensamble = PlantaServices.EnsambleArranque.get({id: $routeParams.EnsambleID}, function () {
+            $scope.prueba = new PlantaServices.Vacios({
+                dtInicio: new Date(),
+                dtFin: new Date(),
+                tipo: 2,
+                estatus: "Creada",
+                ensamblearranque: {id: $scope.ensamble.id}
+            });
+        });
+        $scope.GuardarPrueba = function () {
+            $scope.prueba.estatus = "Finalizada";
+            $scope.prueba.$save(function () {
+            }, function () {
+            });
+        };
+    }]);
+app.controller("PruebaArranqueViewCtrl",
+        ["$routeParams", "$scope", "PlantaServices", "$timeout",
+            function ($routeParams, $scope, PlantaServices, $timeout) {
+                $scope.ensamble = PlantaServices.EnsambleArranque.get({id: $routeParams.EnsambleID}, function () {
+                });
+                $scope.prueba = new PlantaServices.Arranques.get({id: $routeParams.PruebaID});
+                $scope.GuardarPrueba = function () {
+                    $scope.prueba.$save(function () {
+                    }, function () {
+                    });
+                };
+            }]);
+app.controller("PruebaVacioViewCtrl", ["$routeParams", "$scope", "PlantaServices", "$timeout",
+    function ($routeParams, $scope, PlantaServices, $timeout) {
+        $scope.ensamble = PlantaServices.EnsambleArranque.get({id: $routeParams.EnsambleID}, function () {
+        });
+        $scope.prueba = new PlantaServices.Vacios.get({id: $routeParams.PruebaID});
+        $scope.GuardarPrueba = function () {
 
+            $scope.prueba.$save(function () {
+            }, function () {
+            });
+        };
     }]);
 app.controller("PruebaInstalacionViewCtrl", ["$routeParams", "$scope", "PlantaServices", "$timeout",
     function ($routeParams, $scope, PlantaServices, $timeout) {
@@ -933,27 +987,53 @@ app.controller("PruebaInstalacionViewCtrl", ["$routeParams", "$scope", "PlantaSe
         $scope.prueba = new PlantaServices.Instalaciones.get({id: $routeParams.PruebaID});
         $scope.GuardarPrueba = function () {
             $scope.prueba.$save(function () {
-                $scope.prueba.estatus = 2;
             }, function () {
             });
         };
     }]);
-app.run(["$rootScope", "PlantaServices", "amMoment",
-    function ($rootScope, PlantaServices, amMoment) {
+app.run(["$rootScope", "PlantaServices", "amMoment", "$cookieStore", "$location",
+    function ($rootScope, PlantaServices, amMoment, $cookieStore, $location) {
         amMoment.changeLocale('es');
-        $rootScope.user = PlantaServices.Usuarios.current();
+        //$rootScope.user = PlantaServices.Usuarios.current();
         $rootScope.hasRole = function (role) {
-
             if ($rootScope.user === undefined) {
                 return false;
             }
 
-            if ($rootScope.user.rol === undefined) {
+            if ($rootScope.user.roles[role] === undefined) {
                 return false;
             }
 
-            return $rootScope.user.rol === role;
+            return $rootScope.user.roles[role];
         };
+        $rootScope.logout = function () {
+            delete $rootScope.user;
+            delete $rootScope.authToken;
+            $cookieStore.remove('authToken');
+            $location.path("/login");
+        };
+        /* Try getting valid user from cookie or go to login page */
+        var originalPath = $location.path();
+        $location.path("/login");
+        var authToken = $cookieStore.get('authToken');
+        if (authToken !== undefined) {
+            $rootScope.authToken = authToken;
+            PlantaServices.Usuarios.current(function (user) {
+                $rootScope.user = user;
+                if("/login" === originalPath)
+                    $location.path("/Pruebas");
+                else
+                    $location.path(originalPath);
+            });
+        }
+
+        $rootScope.$on('$routeChangeStart', function (event, next) {
+//            if ($rootScope.authToken === undefined) {
+//                event.preventDefault();
+//                $location.path("/login");
+//            }
+        });
+        $rootScope.initialized = true;
     }]);
 app.controller('MainCtrl', ['$scope', '$timeout', '$log', 'Uuid', 'Sample', 'ganttMouseOffset', 'moment', "PlantaServices",
     function ($scope, $timeout, $log, Uuid, Sample, mouseOffset, moment, PlantaServices) {
@@ -1079,3 +1159,22 @@ app.controller('ProgramacionPruebasArranqueCtrl', ['$scope', '$timeout', '$log',
             $scope.api.data.load(data);
         };
     }]);
+function LoginController($scope, $rootScope, $location, $cookieStore, PlantaServices) {
+    $scope.rememberMe = false;
+    $scope.login = function () {
+        PlantaServices.UserService.authenticate($.param({username: $scope.username, password: $scope.password}),
+                function (authenticationResult) {
+                    var authToken = authenticationResult.token;
+                    $rootScope.authToken = authToken;
+                    if ($scope.rememberMe) {
+                        $cookieStore.put('authToken', authToken);
+                    }
+                    PlantaServices.Usuarios.current(function (user) {
+                        $rootScope.user = user;
+                        $location.path("/");
+                    });
+                });
+    };
+}
+;
+
