@@ -34,29 +34,29 @@ module.exports = function(grunt) {
       }
     },
 
-    karma: {
-      unit: {
-        configFile: 'test/karma-angular-1.2.conf.js',
-        singleRun: true,
-        coverageReporter: {
-          type: 'text',
-          dir: 'coverage/'
-        }
-      },
-      unit13: {
-        configFile: 'test/karma-angular-1.3.conf.js',
-        singleRun: true,
-        coverageReporter: {
-          type: 'text',
-          dir: 'coverage/'
-        }
-      },
-      watch: {
-        configFile: 'test/karma-angular-1.2.conf.js',
-        singleRun: false,
-        reporters: ['progress']  // Don't display coverage
-      }
-    },
+    // karma: {
+    //   unit: {
+    //     configFile: 'test/karma-angular-1.2.conf.js',
+    //     singleRun: true,
+    //     coverageReporter: {
+    //       type: 'text',
+    //       dir: 'coverage/'
+    //     }
+    //   },
+    //   unit13: {
+    //     configFile: 'test/karma-angular-1.3.conf.js',
+    //     singleRun: true,
+    //     coverageReporter: {
+    //       type: 'text',
+    //       dir: 'coverage/'
+    //     }
+    //   },
+    //   watch: {
+    //     configFile: 'test/karma-angular-1.2.conf.js',
+    //     singleRun: false,
+    //     reporters: ['progress']  // Don't display coverage
+    //   }
+    // },
 
     jshint: {
       jshintrc: '.jshintrc',
@@ -85,10 +85,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-karma');
+  //grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['jshint', 'karma:unit', 'karma:unit13', 'uglify', 'cssmin', 'concat:build']);
-  grunt.registerTask('test', ['karma:watch']);
+  grunt.registerTask('default', ['jshint', 
+    //'karma:unit', 'karma:unit13', 
+    'uglify', 'cssmin', 'concat:build']);
+  //grunt.registerTask('test', ['karma:watch']);
   grunt.registerTask('build', ['default']);
 
 };

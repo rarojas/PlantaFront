@@ -7,37 +7,42 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/angular/angular.min.js"></script>
         <script type="text/javascript" src="/moment/min/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="/d3/d3.min.js"></script>
+        <script type="text/javascript" src="/nvd3/nv.d3.min.js"></script>
+        
+
+        <script type="text/javascript" src="/angular/angular.min.js"></script>        
         <script type="text/javascript" src="/angular-moment/angular-moment.min.js"></script>
         <script type="text/javascript" src="/angular-gantt/assets/angular-gantt.js"></script>
         <script type="text/javascript" src="/angular-gantt/assets/angular-gantt-bounds.min.js"></script>
         <script type="text/javascript" src="/angular-gantt/assets/angular-gantt-plugins.min.js"></script>
         <script type="text/javascript" src="/angular-gantt/assets/angular-gantt-tooltips.min.js"></script>        
         <script type="text/javascript" src="/angular-strap/dist/angular-strap.min.js"></script>
-        <script type="text/javascript" src="/angular-strap/dist/angular-strap.tpl.min.js"></script>
-        <script type="text/javascript" src="/d3/d3.min.js"></script>
-        <script type="text/javascript" src="/nvd3/nv.d3.min.js"></script>
-        <script type="text/javascript" src="/n3-line-chart/dist/line-chart.min.js"></script>
+        <script type="text/javascript" src="/angular-strap/dist/angular-strap.tpl.min.js"></script>        
         <script type="text/javascript" src="/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.min.js"></script>
         <script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="/angular-resource/angular-resource.min.js"></script>
         <script type="text/javascript" src="/angular-loading-bar/build/loading-bar.min.js"></script>
+        <script type="text/javascript" src="/angular-cookies/angular-cookies.min.js"></script>
+
         <script type="text/javascript" src="/js/app/app.js"></script>
         <script type="text/javascript" src="/js/app/services.js"></script>
         <script type="text/javascript" src="/js/app/routes.js"></script>
         <script type="text/javascript" src="/js/app/directives.js"></script>
         <script type="text/javascript" src="/js/app/Incidencias/routes.js"></script>
         <script type="text/javascript" src="/js/app/Incidencias/controllers.js"></script>
+        <script type="text/javascript" src="/n3-line-chart/dist/line-chart.min.js"></script>
 
 
-        <script type="text/javascript" src="/angular-cookies/angular-cookies.min.js"></script>
-        <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+       
+        <link href="/js/libs/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/js/libs/twitter-bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
         <link href="/angular-gantt/assets/gantt.css" rel="stylesheet">
         <link href="/nvd3/nv.d3.min.css" rel="stylesheet">
         <link href="/css/css/sb-admin.css" rel="stylesheet">
+        <link href="/css/css/typehead.css" rel="stylesheet">
         <link href="/css/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="/nvd3/nv.d3.min.css" rel="stylesheet">
         <!-- bower:js -->
@@ -66,13 +71,13 @@
             <nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"  ng-show="user !== undefined">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href id="menu-toggle">
+                    <a class="navbar-brand" href id="menu-toggle" >
                         <img style="width:150px" src="/img/EV.png" class="img-responsive hidden-xs" alt="" />
                     </a>                    
                 </div>
@@ -157,10 +162,12 @@
                                  <a href="#">View All</a>
                              </li>
                          </ul>
-                     </li>-->
-                    <li class="dropdown">
-                        <a href class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
-                            Bienvenid@ {{user.username}} <b class="caret"></b>
+                     </li>-->                  
+                    <li class="dropdown" >
+                        <a href class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user" ></i>
+                            Bienvenid@ {{user.username}} 
+                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -178,8 +185,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href style="padding:0px">
+                    <li class="hidden-xs">
+                        <a href style="padding:0px" >
                             <img src="/img/LogoSelmec.png" class="img-responsive" style="width:150px" alt=""/>
                         </a>
                     </li>
