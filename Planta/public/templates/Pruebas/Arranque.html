@@ -1,0 +1,121 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-sm-6">       
+            <fieldset>
+                <legend>Arranque</legend>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.instrumentos" name="instrumentos">
+                                Conexón y Estado de Instrumentos de motor
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.regulador" name="regulador">
+                                Conexión correcta del regulador de voltaje
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.maestro" name="maestro">
+                                Conexión y estado del control maestro
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.multimetro" name="multimetro">
+                                Conexión y estado del multimetro
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.amperimetro" name="amperimetro">
+                                Conexión y estado del amperímetro
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.frecuencimetro" name="frecuencimetro">
+                                Conexión y estado del frecuencímetro 
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.horometro" name="horometro">
+                                Conexión y estado horometro
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.selector" name="selector">
+                                Selector de Voltímetro
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.fusibles" name="fusibles">
+                                Fusibles Motor
+                            </label>
+                        </div>      
+                    </div>
+                </div>             
+            </fieldset>
+        </div> 
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                     <datosarranque></datosarranque>
+                </div>
+            </div>            
+            <div class="row">     
+                <div class="col-sm-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</form>

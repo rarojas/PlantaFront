@@ -1,0 +1,242 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-md-6">       
+            <fieldset>
+                <legend>AJUSTE DE PROTECCIONES (Nota:Lectura del Control)</legend>
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Ajuste de Termómetro (°C)
+                    </label>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" required ng-model="prueba.termometro" name="termometro" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Ajuste de Presión de Aceite (BAR)
+                    </label>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" required ng-model="prueba.presion" name="presion" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Saque de marcha
+                    </label>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" required ng-model="prueba.saquemarcha" name="saquemarcha">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Ajuste de Sobrevelocidad (%)
+                    </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" required ng-model="prueba.sobrevelocidad" name="sobrevelocidad">
+                    </div>
+                </div>
+            </fieldset>
+        </div> 
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <datosprueba></datosprueba>
+                </div>
+            </div>   
+            <div class="row">            
+                <div class="col-md-12"incidenciasctrl></div>
+            </div>
+            <div class="row">     
+                <div class="col-md-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="row">    
+        <div class="col-md-6">
+            <fieldset>
+                <legend>TABLERO DE TRANSFERENCIA</legend>
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        MARCA UBT:
+                    </label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" required ng-model="prueba.ubt"name="ubt" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.aplicatablero" name="aplicatablero">
+                                ¿Aplica?
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.operacionubt"  ng-disabled="!prueba.aplicatablero" name="operacionubt">
+                                Operación normal de UBT
+                            </label>
+                        </div>                        
+                    </div>               
+                </div>
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.cargaliena" ng-disabled="!prueba.aplicatablero" name="cargaliena">
+                                Transferencia de carga línea normal
+                            </label>
+                        </div>                        
+                    </div>               
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <fieldset>
+                            <legend>Módulo de contactos</legend>               
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>                           
+                                            <input type="checkbox" ng-model="prueba.aplicacontactos" name="aplicacontactos">
+                                            ¿Aplica?
+                                        </label>
+                                    </div>      
+                                </div>
+                            </div>
+                            <div class="form-group">                
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="prueba.altatemperatura"  ng-disabled="!prueba.aplicacontactos"name="altatemperatura" >
+                                            Señal de alta temperatura (contacto seco)
+                                        </label>
+                                    </div>                        
+                                </div>               
+                            </div>
+                            <div class="form-group">                
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="prueba.bajapresion" ng-disabled="!prueba.aplicacontactos" name="bajapresion">
+                                            Señal de baja Presión (contacto seco)
+                                        </label>
+                                    </div>                        
+                                </div>               
+                            </div>
+                            <div class="form-group">                
+                                <div class="col-md-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" ng-model="prueba.fallageneral" ng-disabled="!prueba.aplicacontactos" name="fallageneral">
+                                            Señal falla general (contacto seco)
+                                        </label>
+                                    </div>                        
+                                </div>               
+                            </div>
+                            <!--                            <div class="form-group">                
+                                                            <div class="col-md-12">
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" ng-model="prueba.cargalinea" ng-disabled="!prueba.aplicacontactos" name="">
+                                                                        Cargador de batería
+                                                                    </label>
+                                                                </div>                        
+                                                            </div>               
+                                                        </div>                -->
+                        </fieldset>
+                    </div>
+                </div>
+            </fieldset>
+        </div>   
+        <div class="col-md-6">
+            <fieldset>
+                <legend>PRUEBA DE PROTECCIONES</legend>           
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.aplicaprotecciones" name="aplicaprotecciones ">
+                                ¿Aplica?
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.arranquemanual"  ng-disabled="!prueba.aplicaprotecciones" name="arranquemanual">
+                                Arranque manual
+                            </label>
+                        </div>                        
+                    </div>               
+                </div>
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.bajepresion"  ng-disabled="!prueba.aplicaprotecciones" name="bajepresion" >
+                                Protección por baja presión de aceite
+                            </label>
+                        </div>                        
+                    </div>               
+                </div>    
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.temperatura"  ng-disabled="!prueba.aplicaprotecciones" name="temperatura">
+                                Protección por temperatura
+                            </label>
+                        </div>                        
+                    </div>               
+                </div>     
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.proteccionsobrevelocidad"  ng-disabled="!prueba.aplicaprotecciones" name="proteccionsobrevelocidad">
+                                Protección por sobre velocidad
+                            </label>
+                        </div>                        
+                    </div>               
+                </div>           
+                <div class="form-group">                
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="prueba.intentosarranque"  ng-disabled="!prueba.aplicaprotecciones" name="intentosarranque">
+                                Protección por intentos de arranque
+                            </label>
+                        </div>                        
+                    </div>       
+                </div>  
+
+                <div class="form-group">                                    
+                    <label class="col-md-8 control-label">
+                        Número de pulsos de arranque
+                    </label>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" ng-model="prueba.pulsos" required   ng-disabled="!prueba.aplicaprotecciones" name="pulsos">
+                    </div>                                            
+                </div>   
+                <div class="form-group">                                    
+                    <label class="col-md-8 control-label">
+                        Duración Total (s)
+                    </label>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" ng-model="prueba.duraciontotal" required   ng-disabled="!prueba.aplicaprotecciones" name="duraciontotal">
+                    </div>                                            
+                </div>   
+            </fieldset>
+        </div>  
+    </div>
+</form>

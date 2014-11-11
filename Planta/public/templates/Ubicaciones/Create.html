@@ -1,0 +1,12 @@
+<div class="col-md-12">
+    <form class="form-horizontal" role="form" ng-submit="Save()" novalidate name="formUbicacion">
+        <fieldset>
+            <legend>Agregar Ubicación</legend>       
+        </fieldset>
+        <div ng-include="'/KitPruebas/templates/Ubicaciones/form.html'" ></div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a href="#/Ubicaciones" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>

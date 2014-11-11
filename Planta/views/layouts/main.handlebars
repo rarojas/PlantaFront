@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">       
+        <meta http-equiv="X-UA-Compatible" content="IE=9" />
+        <meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/moment/min/moment-with-locales.min.js"></script>
+        <script type="text/javascript" src="/angular-moment/angular-moment.min.js"></script>
+        <script type="text/javascript" src="/angular-gantt/assets/angular-gantt.js"></script>
+        <script type="text/javascript" src="/angular-strap/dist/angular-strap.min.js"></script>
+        <script type="text/javascript" src="/angular-strap/dist/angular-strap.tpl.min.js"></script>
+        <script type="text/javascript" src="/d3/d3.min.js"></script>
+        <script type="text/javascript" src="/nvd3/nv.d3.min.js"></script>
+        <script type="text/javascript" src="/n3-line-chart/dist/line-chart.min.js"></script>
+        <script type="text/javascript" src="/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.min.js"></script>
+        <script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="/angular-loading-bar/build/loading-bar.min.js"></script>
+        <script type="text/javascript" src="/js/app/app.js"></script>
+        <script type="text/javascript" src="/js/app/services.js"></script>
+        <script type="text/javascript" src="/js/app/routes.js"></script>
+        <script type="text/javascript" src="/js/app/directives.js"></script>
+        <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet">
+        <link href="/angular-gantt/assets/gantt.css" rel="stylesheet">
+        <link href="/nvd3/nv.d3.min.css" rel="stylesheet">
+        <link href="/css/css/sb-admin.css" rel="stylesheet">
+        <link href="/css/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/nvd3/nv.d3.min.css" rel="stylesheet">
+        <!-- bower:js -->
+        <!-- endbower -->
+        <title>{{{title}}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <script>
+            function formSubmit() {
+                document.getElementById("logoutForm").submit();
+            }
+             $(function () {
+                $("#menu-toggle").click(function (e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                    $(".side-nav").toggleClass("toggled");
+                });
+            }); 
+        </script>
+    
+    </head> 
+
+    <body ng-app="PlantaAPP">               
+         <div id="wrapper" class="toggled">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href id="menu-toggle">
+                        <img style="width:150px" src="/img/EV.png" class="img-responsive hidden-xs" alt="" />
+                    </a>                    
+                </div>
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <!--                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                         <ul class="dropdown-menu message-dropdown">
+                             <li class="message-preview">
+                                 <a href="#">
+                                     <div class="media">
+                                         <span class="pull-left">
+                                             <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                         </span>
+                                         <div class="media-body">
+                                             <h5 class="media-heading"><strong>John Smith</strong>
+                                             </h5>
+                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="message-preview">
+                                 <a href="#">
+                                     <div class="media">
+                                         <span class="pull-left">
+                                             <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                         </span>
+                                         <div class="media-body">
+                                             <h5 class="media-heading"><strong>John Smith</strong>
+                                             </h5>
+                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="message-preview">
+                                 <a href="#">
+                                     <div class="media">
+                                         <span class="pull-left">
+                                             <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                         </span>
+                                         <div class="media-body">
+                                             <h5 class="media-heading"><strong>John Smith</strong>
+                                             </h5>
+                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="message-footer">
+                                 <a href="#">Read All New Messages</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                         <ul class="dropdown-menu alert-dropdown">
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                             </li>
+                             <li class="divider"></li>
+                             <li>
+                                 <a href="#">View All</a>
+                             </li>
+                         </ul>
+                     </li>-->
+                    <li class="dropdown">
+                        <a href class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                            Bienvenid@ {{user.username}} <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Cuenta</a>
+                            </li>
+                            <!--                            <li>
+                                                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                                                        </li>-->
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href style="padding:0px">
+                            <img src="/img/LogoSelmec.png" class="img-responsive" style="width:150px" alt=""/>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                <div bs-navbar class="collapse navbar-collapse navbar-ex1-collapse" >
+                    <ul class="nav navbar-nav side-nav toggled">                        
+                        <li data-match-route="/NuevaPrueba">
+                            <a href="#/NuevaPrueba">                                
+                                Nueva
+                            </a>
+                        </li>
+                        <li data-match-route="/Pruebas">
+                            <a href="#/Pruebas">Pruebas</a>
+                        </li>
+                        <li data-match-route="/ProgramacionPruebasEnsamble">
+                            <a href="#/ProgramacionPruebasEnsamble">Programación de Pruebas de Ensamble </a>
+                        </li>
+                        <li data-match-route="/ProgramacionPruebasArranque">
+                            <a href="#/ProgramacionPruebasArranque">Programación de Pruebas de Arranques</a>                            
+                        </li>
+                        <li data-match-route="/NuevoArranque">
+                            <a href="#/NuevoArranque">Nuevo Arranque</a>
+                        </li>
+                        <li data-match-route="/PruebasArranque">
+                            <a href="#/PruebasArranque">Pruebas Arranque</a>
+                        </li>
+                        <li data-match-route="/Clientes">
+                            <a href="#/Clientes">Clientes</a>
+                        </li>
+                        <li data-match-route="/Motores">
+                            <a href="#/Motores" class="dropdown-toggle">Motores</a>                                        
+                        </li>
+                        <li data-match-route="/Incidencias">
+                            <a href="#/Incidencias" class="dropdown-toggle">Incidencias</a>                                        
+                        </li>
+                        <li data-match-route="/Usuarios">
+                            <a href="#/Usuarios" class="dropdown-toggle">Usuarios</a>                                        
+                        </li> 
+                        <li data-match-route="/Ubicaciones">
+                            <a href="#/Ubicaciones" class="dropdown-toggle">Ubicaciones</a>                                        
+                        </li> 
+                        <li data-match-route="/Carriles">
+                            <a href="#/Carriles" class="dropdown-toggle">Carriles</a>                                        
+                        </li> 
+                        <li data-match-route="/Kits">
+                            <a href="#/Kits" class="dropdown-toggle">Kits</a>                                        
+                        </li>                                
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+
+            <div id="page-wrapper">
+
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <div class="container-fluid"> 
+                        <div class='col-md-12'>
+                           {{{body}}}
+                        </div>
+
+                    </div>
+                </div>        
+            </div>
+        </div> 
+    </body>  
+</html>

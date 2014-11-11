@@ -1,0 +1,12 @@
+<div class="col-md-12">
+    <form class="form-horizontal" role="form" ng-submit="Save()" novalidate name="formMotor">
+        <fieldset>
+            <legend>Agregar Incidencia</legend>       
+        </fieldset>
+        <div ng-include="'/templates/Incidencias/form.html'" ></div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" ng-disable="formMotor.$invalid">Guardar</button>
+            <a href="#/Incidencias" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>

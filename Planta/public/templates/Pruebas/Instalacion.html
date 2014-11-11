@@ -1,0 +1,125 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-sm-6">       
+            <fieldset>
+                <legend>Instalación</legend>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.ventilacion" name="ventilacion">
+                                Ventilación adecuada
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.orientacion" name="orientacion">
+                                Orientación adecuanda de la planta
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.nivel" name="nivel">
+                                Nivelación de Planta adecuado
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.silenciador" name="silenciador">
+                                Colocador de Silenciador(es)
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.combustible" name="combustible">
+                                Instalación de Tanque y Tuberías de combustible
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.aterrizado" name="aterrizado">
+                                Aterrizado
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.neutro" name="neutro">
+                                Conexión a Neutro
+
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.fuerza" name="fuerza">
+                                Conexión Electrica de Fuerza
+
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.precalentador" name="precalentador">
+                                ¿Tiene Precalentador de Agua ?
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.ubt" name="ubt">
+                                ¿Tiene UBT?
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+            </fieldset>
+        </div> 
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <datosarranque></datosarranque>
+                </div>
+            </div>             
+            <div class="row">     
+                <div class="col-sm-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</form>

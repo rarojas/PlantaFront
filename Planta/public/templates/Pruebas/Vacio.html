@@ -1,0 +1,131 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-sm-6">       
+            <fieldset>
+                <legend>Prueba en vacio</legend>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.proteccion" name="proteccion">
+                                Protección de largo tiempo de arranque
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.presion" name="presion">
+                                Protección de Presión de Aceite
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.temperatura" name="temperatura">
+                                Protección de Temperatura de Agua
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.sobrevelocidad" name="sobrevelocidad">
+                                Protección de sobre velocidad
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.ajustevoltaje" name="ajustevoltaje">
+                                Ajuste de Voltaje generado
+                                (voltaje Nomial +- 5Volts)            
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.ajustehz" name="ajustehz">
+                                Ajuste de Frecuencia(60 hz a 62.5 hz)
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.fugas" name="fugas">
+                                Checar que no halla fallas de agua, combustible, o aceite
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.fugaescape" name="fugaescape">
+                                Checar que no haya fugas de escape
+                            </label>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="checkbox">
+                            <label>                           
+                                <input type="checkbox" ng-model="prueba.fases" name="fases">
+                                Checar Secuencia de Fases
+                            </label>
+                        </div>      
+                    </div>
+                </div> 
+
+            </fieldset>
+        </div> 
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <datosprueba></datosprueba>
+                </div>
+            </div>   
+            <div class="row">            
+                <div class="col-sm-12"incidenciasctrl></div>
+            </div>
+            <div class="row">     
+                <div class="col-sm-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</form>

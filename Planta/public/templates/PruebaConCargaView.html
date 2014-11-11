@@ -1,0 +1,89 @@
+<div class="row" >
+    <div class="col-md-9" style="max-height: 400px">                  
+        <table class="table table-condensed">
+            <caption>
+                <h4>
+                    Valores Esperados
+                </h4>
+            </caption>
+            <thead>
+                <tr>
+                    <th>
+                    </th>
+                    <th colspan="3" class="text-center">
+                        Amps
+                    </th >
+                    <th colspan="3" class="text-center">
+                        Volts
+                    </th >
+                    <th>
+                        HZ
+                    </th>
+                    <th>
+                        °C
+                    </th>
+                    <th>
+                        PSI
+                    </th>
+                    <th>
+                        Amp
+                    </th>
+                </tr>            
+            </thead>
+            <tbody>
+                <tr>
+                    <th>    
+
+                    </th>
+                    <th> I1  </th>
+                    <th>
+                        I2
+                    </th>
+                    <th>
+                        I3
+                    </th>
+                    <th>
+                        L1 - N  
+                    </th>
+                    <th>
+                        L2 - N
+                    </th>
+                    <th>
+                        L3 - LN1
+                    </th>
+                    <th>
+                        Frec
+                    </th>
+                    <th>
+                        Temp.
+                    </th>
+                    <th>
+                        P. Oil
+                    </th>
+                    <th>
+                        C. Alt
+                    </th>
+                </tr>               
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-3 ">
+        <datosprueba></datosprueba>
+    </div>
+</div>
+<div class="row">
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        Tablero de Mediciones             
+        <div class="row">         
+            <input ng-model="minute" class="form-control" type="number">
+            <div class="col-md-12">                              
+                <div style="width:1000px;height: 300px">
+                    <linechart data="dara" options="options" mode=""></linechart>
+                </div>
+            </div>                    
+        </div>
+    </div>
+</div>

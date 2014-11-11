@@ -1,0 +1,201 @@
+<div class="row">    
+    <div class="col-sm-12">        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12" style="background-color: #EDEFEE">
+                        <fieldset style="background-color: #EDEFEE">
+                            <legend>                                
+                                Datos Generales de la Planta de Emergencia  
+                                {{prueba.folio}}
+                            </legend>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <legend>Planta de Emergencia</legend> 
+
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Carril                                   
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.carriles.id}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Modelo:                                       
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motores.modelo}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Serie:                                       
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.noSerie}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Op                                       
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.noOp}}
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <legend>Motor</legend>                               
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label">
+                                                Marca:                                        
+                                            </label>                                        
+                                            <label class="control-label col-sm-8">{{ prueba.planta.motores.marca}}</label>                                        
+                                        </div>                               
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Serie                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motorSerie}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Patin                                    
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.patin}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Guardas                                     
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.guardas}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Radiador                                     
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.rediador}}
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <legend>Generador</legend> 
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Marca:                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motores.generadorMarca}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Modelo:                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motores.generadorModelo}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Serie                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.generadorSerie}}
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </fieldset>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="row ">
+                <div class="col-sm-12 text-center">
+                    <h4></h4>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h4>1 Pruebas de Instalción</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4>2 Pruebas de Arranque</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4>3 Pruebas en Vacio</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4></h4>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-sm-3">             
+                <div class="btn-group" ng-show="(prueba.pruebaarranques | filter : {tipo : 0,estatus: 'AutorizadoEjecutor' }).length === 0">
+                    <a class="btn btn-primary" href="#/PruebaInstalacion/{{prueba.id}}">
+                        Entrar
+                    </a>
+                </div>
+                <list-pruebas-arranque prueba="prueba" urlview="PruebaInstalacionView" url="" tipo="0"></list-pruebaarranques>               
+            </div>        
+            <div class="col-sm-3">                             
+                <div class="btn-group"ng-show="(prueba.pruebaarranques | filter : {tipo : 0,estatus: 'AutorizadoEjecutor'}).length !== 0">
+                    <a class="btn btn-primary" href="#/PruebaArranque/{{prueba.id}}">
+                        Entrar
+                    </a>
+                </div>
+                <list-pruebas-arranque prueba="prueba" urlview="PruebaArranqueView" url="" tipo="1"></list-pruebaarranques>
+            </div>
+            <div class="col-sm-3">             
+                <div class="btn-group"ng-show="(prueba.pruebaarranques | filter : {tipo : 1,estatus: 'AutorizadoEjecutor'}).length !== 0">
+                    <a class="btn btn-primary" href="#/PruebaVacio/{{prueba.id}}">
+                        Entrar
+                    </a>
+                </div>
+                <list-pruebas-arranque prueba="prueba" urlview="PruebaVacioView" url="" tipo="2"></list-pruebaarranques>
+            </div>
+            <div class="col-sm-3">              
+                <div class="btn-group" ng-show="(prueba.pruebaarranques | filter : {tipo : 2,estatus: 'AutorizadoEjecutor'}).length !== 0">
+                    <a class="btn btn-primary" href="#/PruebaControl/{{prueba.id}}">
+                        Entrar
+                    </a>
+                </div>
+                <list-pruebas-arranque prueba="prueba" urlview="PruebaControlView" url="" tipo="3"></list-pruebaarranques>
+            </div>
+
+        </div>
+        <div class='row' ng-cloak>
+            <div class='col-sm-6' ng-hide="!canClose()">
+                <fieldset>
+                    <legend>Autorizar Pruebas</legend>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-success" type="button" ng-click="Aprobar()">
+                                Autorizar Pruebas 
+                            </button>
+                            <button class="btn btn-danger"  type="button" ng-click="Rechazar()">
+                                Rechazar Pruebas 
+                            </button>
+                        </div>
+                    </div>  
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

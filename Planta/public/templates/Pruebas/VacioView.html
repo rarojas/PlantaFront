@@ -1,0 +1,116 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-sm-6">       
+            <fieldset>
+                <legend>Prueba en vacio</legend>
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Protección de largo tiempo de arranque
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.proteccion"></check>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Protección de Presión de Aceite
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.presion"></check>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Protección de Temperatura de Agua
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.temperatura"></check>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Protección de sobre velocidad
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.sobrevelocidad"></check>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Ajuste de Voltaje generado
+                        (voltaje Nomial +- 5Volts)                     
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.ajustevoltaje"></check>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Ajuste de Frecuencia(60 hz a 62.5 hz)
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.ajustehz"></check>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Checar que no halla fallas de agua, combustible, o aceite
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.fugas"></check>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Checar que no haya fugas de escape
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.fugaescape"></check>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Checar Secuencia de Fases
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.fases"></check>
+                    </div>
+                </div>
+
+            </fieldset>
+        </div> 
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <datosprueba></datosprueba>
+                </div>
+            </div>   
+            <div class="row">            
+                <div class="col-sm-12"incidenciasctrl></div>
+            </div>
+            <div class="row">     
+                <div class="col-sm-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</form>

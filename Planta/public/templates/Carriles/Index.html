@@ -1,0 +1,33 @@
+<div class="col-md-12">
+    <h3>Carriles</h3>
+    <a href="#/Carriles/Create" class='btn btn-primary'>
+        Agregar Carriles
+    </a>
+    <table class="table table-condensed table-bordered table-hover table-striped">        
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Descripción</th>
+                <th>Equipo</th>  
+                <th>Planta</th>
+                <th>Capacidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="carril  in carriles">
+                <td>
+                    <a href="#/Carriles/Edit/{{carril.id}}">
+                        {{carril.noCarril}}
+                    </a>
+                </td>
+                <td>{{carril.descripcion}}</td>
+                <td>{{carril.equipo}}</td>
+                <td>{{carril.planta}}</td>
+                <td>
+                    <span ng-show="carril.minCap && carril.maxCap">
+                        {{carril.minCap}} KW a {{carril.maxCap}}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>    
+</div>

@@ -1,0 +1,104 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-sm-6">       
+            <fieldset>
+                <legend>Arranque</legend>
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexón y Estado de Instrumentos de motor
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.instrumentos"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexión correcta del regulador de voltaje
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.regulador"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexión y estado del control maestro
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.maestro"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexión y estado del multimetro
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.multimetro"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexión y estado del amperímetro
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.amperimetro"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexión y estado del frecuencímetro 
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.frecuencimetro"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Conexión y estado horometro
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.horometro"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Selector de Voltímetro
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.selector"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-sm-8 control-label">
+                        Fusibles Motor
+                    </label>
+                    <div class="col-sm-4">                    
+                        <check value="prueba.fusibles"></check>
+                    </div>
+                </div>        
+            </fieldset>
+        </div> 
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                    <datosprueba></datosprueba>
+                </div>
+            </div>           
+            <div class="row">     
+                <div class="col-sm-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</form>

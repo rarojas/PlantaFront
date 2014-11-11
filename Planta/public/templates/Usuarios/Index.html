@@ -1,0 +1,85 @@
+<div class="col-md-12">
+    <fieldset>
+        <legend>Usuarios</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline" role="form" name="fromSearch" novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Nombres</label>
+                        <div class="col-md-8">
+                            <input name="nombres" ng-model="search.nombres" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Email</label>
+                        <div class="col-md-8">
+                            <input name="descripcion" ng-model="search.descripcion" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">  
+
+                <div class="row">
+                    <div class="col-md-12 text-right">  
+                        <a href="#/Usuarios/Create" class='btn btn-primary'>
+                            Agregar Usuario
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">  
+                        <table class="table table-condensed table-bordered table-hover table-striped">        
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>  
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="usuario  in result()">
+                                    <td>
+                                        <a href="#/Usuarios/Edit/{{usuario.id}}">
+                                            {{usuario.email}}
+                                        </a>
+                                    </td>
+                                    <td>{{usuario.nombres}}</td>
+                                    <td>{{usuario.apellidos}}</td>
+                                    <td>{{Rol(usuario.rol)}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>                
+                                <tr>
+                                    <td colspan="12" class="text-right">
+                                        <label>
+                                            <span ng-show="total !== 0">
+                                                Pagina {{current + 1}} de {{total}} 
+                                            </span>Total de resultados {{totalRows}}
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tfoot>                        
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination">
+                            <li><a ng-click="previous()">&laquo;</a></li>
+                            <li ng-repeat="page in pages"  ng-class="{
+                                    active : page === current
+                                }">
+                                <a ng-click="setPage(page)">{{page + 1}}</a>
+                            </li>                   
+                            <li><a ng-click="next()">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

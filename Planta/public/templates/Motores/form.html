@@ -1,0 +1,125 @@
+<div class="form-group">
+    <label class="control-label col-md-4">Modelo</label>
+    <div class="col-md-8">
+        <input class="form-control" type="text" required name="codigo" ng-model="motor.modelo" placeholder="Código">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Corriente</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="Amp" ng-model="motor.amp" placeholder="Amp">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-4">KW</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="kw" ng-model="motor.kw" placeholder="KW">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">KVA</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="kva" ng-model="motor.kva" placeholder="KWA">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">KW Continuo</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="kwContinuo" ng-model="motor.kwContinuo" placeholder="KW Continuo">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Corriente Continuo</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="ampContinuo" ng-model="motor.ampContinuo" placeholder="KW Continuo">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">KVA Continuo</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="kvaContinuo" ng-model="motor.kvaContinuo" placeholder="KWA Continuo">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">RPM</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0"   name="rpm" ng-model="motor.rpm" placeholder="RPM">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Fases</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="1"  max="3" name="noFases" ng-model="motor.noFases" placeholder="Fases">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">HZ</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="50"  max="60" name="frecuenciaOperacion" ng-model="motor.frecuenciaOperacion" placeholder="Frecuencia Operacion">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Corriente Operación</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required min="0" name="amp" ng-model="motor.amp" placeholder="Corriente Operación">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Marca</label>
+    <div class="col-md-8">
+        <input class="form-control" type="text" required name="marca" ng-model="motor.marca" placeholder="Marca">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Generador Marca</label>
+    <div class="col-md-8">
+        <input class="form-control" type="text" required name="marca" ng-model="motor.generadorMarca" placeholder="Generador Marca">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Generador Modelo </label>
+    <div class="col-md-8">
+        <input class="form-control" type="text" required name="marca" ng-model="motor.generadorModelo" placeholder="Generador Modelo">
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Derrateo</label>
+    <div class="col-md-8">
+        <input class="form-control" type="number" required name="marca" ng-model="motor.derrateo" placeholder=Derrateo>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Combustible</label>
+    <div class="col-md-8">
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="combustible" ng-model="motor.combustible" value="0">                
+                Diesel
+            </label>                            
+        </div>
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="combustible" ng-model="motor.combustible" value="1">                
+                Gasolina
+            </label>                
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Tipo Control</label>
+    <div class="col-md-8">
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="tipoControl" ng-model="motor.tipoControl" value="0">                
+                Intellite
+            </label>                            
+        </div>
+        <div class="radio-inline">
+            <label>
+                <input type="radio" name="tipoControl" ng-model="motor.tipoControl" value="1">                
+                InteliComAp
+            </label>                
+        </div>
+    </div>
+</div>

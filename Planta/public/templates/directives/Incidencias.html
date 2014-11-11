@@ -1,0 +1,21 @@
+<div ng-show="prueba.estatus === 'Finalizada'">
+    <fieldset>
+        <legend>Comentarios de la Prueba:</legend>
+        <div class="form-group">
+            <label class="control-label col-md-4">Tipo de Incidencia:</label>
+            <div class="col-md-8">
+                <select class="form-control" ng-options="(i.id + '-' +i.descripcion) for i in incidencias" ng-model="prueba.incidencias" ></select>
+            </div>
+        </div>
+        <div class="form-group">                        
+            <div class="col-md-12">
+                <textarea class="form-control" ng-model="prueba.comentario" placeholder="Comentarios..."></textarea>
+            </div>
+        </div>
+        <div class="form-group" ng-show="prueba.estatus === 2 ">                        
+            <div class="col-md-12 text-right">
+                <button ng-click="Save()" class="btn btn-success" ng-disable="$parent.prueba.estatus !== 1 || $parent.prueba == null">Guardar</button>
+            </div>
+        </div>
+    </fieldset>    
+</div>

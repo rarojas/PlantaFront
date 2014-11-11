@@ -1,0 +1,141 @@
+
+<div class="row">
+    <fieldset>
+        <legend>Inventarios de Pruebas</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline" role="form" name="fromSearch" novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Folio</label>
+                        <div class="col-md-8">
+                            <input name="folio" ng-model="search.folio" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">No Serie Planta</label>
+                        <div class="col-md-8">
+                            <input name="noSerie" ng-model="search.planta.noSerie" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Carril</label>
+                        <div class="col-md-8">
+                            <input name="noCarril" ng-model="search.carriles.noCarril" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Modelo Motor</label>
+                        <div class="col-md-8">
+                            <input name="noCarril" ng-model="search.planta.motores.modelo" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Capacidad</label>
+                        <div class="col-md-8">
+                            <input name="noCarril" ng-model="search.planta.motores.kw" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">Voltaje Prueba</label>
+                        <div class="col-md-8">
+                            <input name="noCarril" ng-model="search.planta.voltaje" class="form-control" type="text"/>                
+                        </div>
+                    </div>
+                </form>
+            </div> 
+        </div>        
+        <div class="col-md-12">
+            <table class="table table-bordered table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Folio</th>
+                        <th>No Serie</th>
+                        <th>Modelo</th>
+                        <th>Carril</th>
+                        <th>Marca Generador</th>
+                        <th>Capacidad (KW)</th>
+                        <th>Voltaje De Pruebba</th>
+                        <th>No Fases</th>
+                        <th>Guardas</th>
+                        <th>Radiador</th>
+                        <th>F Programada</th>
+                        <th>F Programada Real</th>
+                        <th>Estatus</th>
+                        <th>Creación</th>                        
+                        <th>Ejecutor</th>
+                    </tr>
+                </thead>
+                <tr  ng-repeat="prueba in result()">
+                    <td>  
+                        <a href="#/PruebasArranque/{{prueba.id}}" title="{{prueba.folio}}">{{prueba.folio}}</a>                    
+                    </td>
+                    <td>
+                        {{prueba.planta.noSerie}}
+                    </td>
+                    <td>
+                        {{prueba.planta.motores.modelo}}
+                    </td>
+                    <td>
+                        {{prueba.carriles.noCarril}}
+                    </td>
+                    <td>
+                        {{prueba.planta.motores.generadorMarca}} 
+                    </td>
+                    <td>
+                        {{prueba.planta.motores.kw}} kW
+                    </td>
+                    <td>
+                        {{prueba.planta.voltaje}} v
+                    </td>
+                    <td>
+                        {{prueba.planta.motores.noFases}}
+                    </td>
+                    <td>
+                        {{prueba.guardas}}
+                    </td>
+                    <td>
+                        {{prueba.rediador}}
+                    </td>
+                    <td>
+                        {{prueba.dtProgramada}}
+                    </td>
+                    <td>
+                        {{prueba.dtProgramadaReal}}
+                    </td>
+                    <td>
+                        {{prueba.estatus}}
+                    </td>
+                    <td>
+                        {{prueba.dtCreacion| date : 'dd-MM-yyyy hh:ss'}}
+                    </td>
+                    <td>
+                        {{prueba.usuarioId.nombres}}
+                    </td>
+                </tr>  
+                <tfoot>                
+                    <tr>
+                        <td colspan="12" class="text-right">
+                            <label>
+                                <span ng-show="total !== 0">
+                                    Pagina {{current + 1}} de {{total}} 
+                                </span>Total de resultados {{totalRows}}
+                            </label>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="pagination">
+                    <li><a ng-click="previous()">&laquo;</a></li>
+                    <li ng-repeat="page in pages"  ng-class="{active : page === current}">
+                        <a ng-click="setPage(page)">{{page + 1}}</a>
+                    </li>                   
+                    <li><a ng-click="next()">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+    </fieldset>
+</div>
+

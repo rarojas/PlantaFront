@@ -1,0 +1,23 @@
+<div>
+    <table class="table table-condensed table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Folio</th>
+                <th>Fecha</th>
+                <th>Estatus</th>                            
+            </tr>                        
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in prueba.pruebaarranques | filter :{ tipo : tipo} | orderBy: 'id'"> 
+                <td>
+                    <a href="#/{{urlview}}/{{prueba.id}}/{{row.id}}">{{row.id}}</a>
+                </td>
+                <td>
+                    {{row.dtInicio| date : 'dd/MM/yyyy hh:mm'}}
+                </td>
+                <td><estatus-prueba value="row.estatus"></estatus-prueba>
+        </td>
+        </tr>
+        </tbody>                
+    </table>
+</div>

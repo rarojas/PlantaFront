@@ -1,0 +1,265 @@
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal" role="form" name="formPlanta" ng-submit="submit()">   
+            <div class="row">
+                <div class="col-md-12" style="background-color: #EDEFEE">
+                    <fieldset>
+                        <legend >
+                            Datos Generales de la Planta de Emergencia                                                        
+                        </legend>
+                        <div class="row">
+                            <div class="col-md-4"> 
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Cliente
+                                    </label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="cliente" ng-options="c.razonSocial for c in clientes" required="" ng-model="prueba.cliente" >
+                                            <option value="">Nuevo Cliente</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        No Cliente
+                                    </label>
+                                    <div class="col-md-8">
+                                        <label  ng-show="prueba.cliente.id">{{prueba.cliente.noCliente}}</label>
+                                        <input ng-show="!prueba.cliente.id" type="text" class="form-control" required ng-model="prueba.cliente.noCliente" name="noCliente" placeholder="No Cliente">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Razón Social                            
+                                    </label>
+                                    <div class="col-md-8">    
+                                        <label  ng-show="prueba.cliente.id">{{prueba.cliente.razonSocial}}</label>
+                                        <input ng-show="!prueba.cliente.id"type="text" class="form-control" required ng-model="prueba.cliente.razonSocial" name="Cliente" placeholder="Razón Social">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        No. OP                                       
+                                    </label>
+                                    <div class="col-md-8 album-search text-center" ng-cloack>
+                                        <autocomplete class="typeahead" items="plantas" term="term" search="searchPlanta(term)" select="selectPlanta(item)">
+                                            <div class="menu" ng-cloak>                                                
+                                                <ul>                                                    
+                                                    <li itemautocomplete="planta" ng-repeat="planta in plantas" class="results">                                                                                                                                                                   
+                                                        <p class="name">No Op: {{planta.noOp}}</p> <p class="artist">No Serie: {{planta.noSerie}}</p>
+                                                    </li>
+                                                </ul>                                                
+                                            </div>
+                                        </autocomplete>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        No. OV                                   
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" required ng-model="prueba.noOV" name="noOV" placeholder="No OV">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">                               
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Instalacion en :
+                                    </label>
+                                    <div class="col-md-8">
+                                        <select name="ubbicacion" ng-options="m.poblacion for m in ubicaciones" ng-model="prueba.ubicaciones" required class="form-control" >
+                                            <option value="">Nueva Ubicación</option>
+                                        </select>
+                                    </div>
+                                </div>                               
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">
+                                        Poblacion                                     
+                                    </label>                                        
+                                    <div class="col-md-8">
+                                        <label ng-show="prueba.ubicaciones.id">{{prueba.ubicaciones.poblacion}}</label>
+                                        <input ng-show="!prueba.ubicaciones.id" type="text" class="form-control" required ng-model="prueba.ubicaciones.poblacion" name="poblacion" placeholder="Población">
+                                    </div>                                     
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">
+                                        Entidad                                        
+                                    </label>                                        
+                                    <div class="col-md-8">
+                                        <label ng-show="prueba.ubicacion.id">{{prueba.ubicaciones.estado}}</label>
+                                        <input ng-show="!prueba.ubicaciones.id" type="text" class="form-control " required ng-model="prueba.ubicaciones.estado" name="estado" placeholder="Entidad">
+                                    </div>                                      
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Teléfono
+                                    </label>
+                                    <div class="col-md-8">
+                                        <label ng-show="prueba.ubicaciones.id">{{prueba.ubicaciones.telefono}}</label>
+                                        <input ng-show="!prueba.ubicaciones.id" type="text" class="form-control" required ng-model="prueba.ubicaciones.telefono" name="telefono" placeholder="Teléfono">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">                               
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Persona que atendió al Técnico                                    
+                                    </label>
+                                    <div class="col-md-8">                                        
+                                        <input type="text" class="form-control" ng-model="prueba.recibio" required name="atendio" placeholder="Persona que Atendió">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Nombre del Técnico                                      
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" ng-model="prueba.tecnico" required name="tecnico" placeholder="Técnico">
+                                    </div>
+                                </div>  
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Kit de Prueba
+                                    </label>
+                                    <div class="col-md-8">                                        
+                                        <select class="form-control" ng-model="prueba.kit" ng-options="k.descripcion for k in kits" name="kit"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                        Fecha Programada de Pruebas                                  
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input ng-model="prueba.dtProgramada"  type="date" class="form-control" name="dtProgramada" />
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </fieldset>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="background-color: #EDEFEE">                        
+                    <fieldset>
+                        <legend>
+                            Datos de Placa
+                        </legend>
+                        <div class="row">
+                            <div class="col-md-4">  
+                                <fieldset>
+                                    <legend>Planta</legend>
+
+                                    <div class="form-group">
+                                        <label  class="control-label col-md-4">
+                                            Marca                            
+                                        </label>
+                                        <label class="col-md-8">{{prueba.planta.motores.marca}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">
+                                            Modelo
+                                        </label>
+                                        <label class="col-md-8">{{prueba.planta.motores.modelo}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">
+                                            No. Serie
+                                        </label>
+                                        <label class="col-md-8">{{prueba.planta.noSerie}}</label>
+                                    </div>   
+                                </fieldset>
+                            </div>
+                            <div class="col-md-5">
+                                <fieldset>
+                                    <legend><br></legend>
+                                    <div class="col-md-12" style="background-color: #EDEFEE">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    Tipo de Control                                        
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.motores.tipoControl}}</label>
+                                            </div> 
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    Tipo de Combustible                                        
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.motores.combustible}}</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    Capacidad Interruptor(A)                                        
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.capInt}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    KW:                                         
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.motores.kw}}</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    KVA                                         
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.motores.kva}}</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    HZ                                         
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.motores.frecuenciaOperacion}}</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-4">
+                                                    No.Fases                                         
+                                                </label>
+                                                <label class="col-md-8">{{prueba.planta.motores.noFases}}</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">                                 
+                                <fieldset>
+                                    <legend>Generador</legend>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">
+                                            Marca                                         
+                                        </label>
+                                        <label class="col-md-8">{{prueba.planta.motores.generadorMarca}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">
+                                            Modelo                                         
+                                        </label>
+                                        <label class="col-md-8">{{prueba.planta.motores.generadorModelo}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4">
+                                            No. Serie                                         
+                                        </label>
+                                        <label class="col-md-8">{{prueba.planta.generadorSerie}}</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary" type="submit" ng-disabled="formPlanta.$invalid">
+                        Guardar y Comenzar las Pruebas
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

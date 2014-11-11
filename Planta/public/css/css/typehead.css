@@ -1,0 +1,62 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none;
+}
+.album-search {
+    z-index: 100;
+}
+.album-search .menu {
+    background-color: #344251;                                       
+    max-height: 400px;                
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.album-search ul {
+    background-color: #344251;
+    margin: 0;                                        
+    padding: 0;
+    color: #FFF;
+    list-style: none;
+}
+.album-search .results {
+    width: 375px;
+    margin: auto;
+    text-align: left;
+    min-height:20px;
+    padding: 5px;
+}
+.album-search .results.active {
+    background-color: #67B331;
+}
+.album-search .results.active .name {
+    color: #ffffff;
+}
+
+.album-search .results.active {
+    background-color: #67B331;
+}
+
+.album-search .results .name {
+    font-size: 12px;                
+}
+.album-search .results p {
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+.album-search .results .artist {
+    font-size: 12px;                
+    color: #fff;
+    margin-left: 20px;
+}
+.album-search .results img {
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+
+.full-circle {                
+    height: 10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius: 5px;
+    width: 10px;
+}
+

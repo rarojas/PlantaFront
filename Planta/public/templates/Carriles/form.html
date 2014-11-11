@@ -1,0 +1,57 @@
+<div class="form-group">
+    <label class="control-label col-md-4">
+        No Carril
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="carril.noCarril" name="noCarril" required type='number' placeholder="No Carril" >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Descripción
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="carril.descripcion" name="descripcion"  placeholder="Descripcion...." >
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Equipo
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="carril.equipo" name="equipo" required placeholder="Equipo...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Planta
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="carril.planta" name="planta" required placeholder="Planta...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Capacidad Minima
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="carril.minCap" name="minCap"  required type='number' placeholder="Capacidad Minima" >
+        <span class="error">
+            <span ng-show="carril.minCap === undefined || carril.minCap < 0 || carril.minCap >= carril.maxCap">
+                Capacidad minima invalida
+            </span>
+        </span>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Capacidad Máxima
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="carril.maxCap" name="maxCap" required type='number' placeholder="Capacidad Máxima" >
+        <span ng-show="carril.maxCap === undefined || carril.maxCap < 0 || carril.maxCap <= carril.minCap">
+            Capacidad máxima invalida
+        </span>
+    </div>
+</div>

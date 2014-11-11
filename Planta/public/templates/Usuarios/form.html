@@ -1,0 +1,35 @@
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Nombres
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.nombres" name="nombres" required placeholder="Nombres...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Apellidos
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.apellidos" name="apellidos" required placeholder="Apellidos...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Email
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.email" name="email" required placeholder="Email...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Roles
+    </label>
+    <div class="col-md-8">
+        <button type="button" class="btn btn-default" ng-model="usuarios.roles" data-html="1" data-multiple="1" 
+                data-animation="am-flip-x" ng-options="r.nbRol  for r in roles" bs-select>
+            Roles <span class="caret"></span>
+        </button>
+    </div>    
+</div>
