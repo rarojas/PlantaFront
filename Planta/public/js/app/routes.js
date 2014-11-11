@@ -1,9 +1,8 @@
-var Routes = ['$routeProvider', '$httpProvider',
-    function ($routeProvider, $httpProvider) {
+var Routes = ['$routeProvider', '$httpProvider','$locationProvider',
+    function ($routeProvider, $httpProvider,$locationProvider) {
 
 //        $httpProvider.defaults.useXDomain = true;      
   //      delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
         $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
             return {
                 'responseError': function (rejection) {
@@ -28,12 +27,12 @@ var Routes = ['$routeProvider', '$httpProvider',
                     var isRestCall = config.url.indexOf('api') !== 0;                                         
                     if (isRestCall && angular.isDefined($rootScope.authToken)) {
                         var authToken = $rootScope.authToken;
-                       // if ( true) {
-                       //        console.log($rootScope.authToken);
-                       //     config.headers['Authentication'] = authToken;
-                        //} else {
+                        if ( true) {
+                               console.log($rootScope.authToken);
+                            config.headers['Authentication'] = authToken;
+                       } else {
                             config.url = config.url + "?token=" + authToken;
-                        //}
+                        }
                     }
                     return config || $q.when(config);
                 }
