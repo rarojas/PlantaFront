@@ -1,0 +1,172 @@
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation" >
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"  ng-show="user !== undefined">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href id="menu-toggle" >
+                        <img style="width:150px" src="/img/EV.png" class="img-responsive hidden-xs" alt="" />
+                    </a>                    
+                </div>
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <!--                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                         <ul class="dropdown-menu message-dropdown">
+                             <li class="message-preview">
+                                 <a href="#">
+                                     <div class="media">
+                                         <span class="pull-left">
+                                             <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                         </span>
+                                         <div class="media-body">
+                                             <h5 class="media-heading"><strong>John Smith</strong>
+                                             </h5>
+                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="message-preview">
+                                 <a href="#">
+                                     <div class="media">
+                                         <span class="pull-left">
+                                             <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                         </span>
+                                         <div class="media-body">
+                                             <h5 class="media-heading"><strong>John Smith</strong>
+                                             </h5>
+                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="message-preview">
+                                 <a href="#">
+                                     <div class="media">
+                                         <span class="pull-left">
+                                             <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                         </span>
+                                         <div class="media-body">
+                                             <h5 class="media-heading"><strong>John Smith</strong>
+                                             </h5>
+                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                             <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                         </div>
+                                     </div>
+                                 </a>
+                             </li>
+                             <li class="message-footer">
+                                 <a href="#">Read All New Messages</a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                         <ul class="dropdown-menu alert-dropdown">
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                             </li>
+                             <li>
+                                 <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                             </li>
+                             <li class="divider"></li>
+                             <li>
+                                 <a href="#">View All</a>
+                             </li>
+                         </ul>
+                     </li>-->                  
+                    <li class="dropdown" >
+                        <a href class="dropdown-toggle" data-toggle="dropdown">                            
+                            <i class="fa fa-user" ></i>                            
+                            Bienvenid@ {{user.username}} 
+                            <b class="caret"></b>                            
+                        </a>
+                        <ul class="dropdown-menu" ng-show="user !== undefined">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Cuenta</a>
+                            </li>
+                            <!--                            <li>
+                                                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                                                        </li>-->
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href style="padding:0px" >
+                            <img src="/img/LogoSelmec.png" class="img-responsive" style="width:150px" alt=""/>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                <div bs-navbar class="collapse navbar-collapse navbar-ex1-collapse" >
+                    <ul class="nav navbar-nav side-nav toggled" ng-show="user !== undefined">                        
+                        <li data-match-route="/NuevaPrueba"> 
+                            <a href="#/NuevaPrueba">                                
+                                Nueva
+                            </a>
+
+                        </li>
+                        <li data-match-route="/Pruebas">
+                            <a href="#/Pruebas">Pruebas</a>
+                        </li>
+                        <li data-match-route="/ProgramacionPruebasEnsamble">
+                            <a href="#/ProgramacionPruebasEnsamble">Programación de Pruebas de Ensamble </a>
+                        </li>
+                        <li data-match-route="/ProgramacionPruebasArranque">
+                            <a href="#/ProgramacionPruebasArranque">Programación de Pruebas de Arranques</a>                            
+                        </li>
+                        <li data-match-route="/NuevoArranque">
+                            <a href="#/NuevoArranque">Nuevo Arranque</a>
+                        </li>
+                        <li data-match-route="/PruebasArranque">
+                            <a href="#/PruebasArranque">Pruebas Arranque</a>
+                        </li>
+                        <li data-match-route="/Clientes">
+                            <a href="#/Clientes">Clientes</a>
+                        </li>
+                        <li data-match-route="/Motores">
+                            <a href="#/Motores" class="dropdown-toggle">Motores</a>                                        
+                        </li>
+                        <li data-match-route="/Incidencias">
+                            <a href="#/Incidencias" class="dropdown-toggle">Incidencias</a>                                        
+                        </li>
+                        <li data-match-route="/Usuarios">
+                            <a href="#/Usuarios" class="dropdown-toggle">Usuarios</a>                                        
+                        </li> 
+                        <li data-match-route="/Ubicaciones">
+                            <a href="#/Ubicaciones" class="dropdown-toggle">Ubicaciones</a>                                        
+                        </li> 
+                        <li data-match-route="/Carriles">
+                            <a href="#/Carriles" class="dropdown-toggle">Carriles</a>                                        
+                        </li> 
+                        <li data-match-route="/Kits">
+                            <a href="#/Kits" class="dropdown-toggle">Kits</a>                                        
+                        </li>                                
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>

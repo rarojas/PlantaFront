@@ -134,10 +134,10 @@ ul.alert-dropdown {
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
-
-     .side-nav.toggled{
-  left: 0px;
- }
+    
+    .side-nav.toggled{
+        left: 25px;
+    }
     .side-nav>li>a {
         width: 225px;
     }

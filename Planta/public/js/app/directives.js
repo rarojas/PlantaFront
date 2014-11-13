@@ -343,4 +343,25 @@ app.directive('itemautocomplete', function () {
     };
 });
 
+app.directive('asidemenu', function () {
+    return {        
+        replace :true,
+        templateUrl:'/templates/directives/asidemenu.html',
+        link: function (scope, element, attrs, controller) {          
+            var $aside =  element.find(".side-nav")
+            $aside.bind('mouseenter', function (e) {                
+                $aside.removeClass("toggled");                
+            });
+            $aside.bind('mouseleave', function (e) {                
+                $aside.addClass("toggled");                
+            });
+
+            $aside.bind('click', function (e) {
+                $aside.toggleClass("toggled");
+            });
+        }
+    };
+});
+
+
 
